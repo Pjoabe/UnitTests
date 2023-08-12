@@ -29,19 +29,40 @@ const productDetails = require('../src/productDetails');
 
 */
 
-describe('6 - Implemente os casos de teste para a função `productDetails`', () => {
-  it('Verifica se a função `productDetails` tem o comportamento esperado', () => {
-    // ESCREVA SEUS TESTES ABAIXO:
-    expect(typeof productDetails('Alcool gel', 'Máscara')).toBe('object')
-    // Teste se productDetails é uma função.
-    expect(typeof productDetails).toBe('function')
-    // Teste se o retorno da função é um array.
-    expect(typeof productDetails()).toBe('object')
-    // Teste se o array retornado pela função contém dois itens dentro.
-    expect(productDetails('Alcool gel', 'Máscara')).toHaveLength(2)
-    // Teste se os dois itens dentro do array retornado pela função são objetos.
-    expect(typeof productDetails('Alcool gel', 'Máscara')).toBe('object')
-    // Teste se quando passado parâmetros diferentes entre si, os dois objetos também são diferentes entre si.
-    // Teste se os dois productIds terminam com 123.
+describe('productDetails', () => {
+  test('should return correct product details array', () => {
+    const result = productDetails('Alcool gel', 'Máscara');
+    expect(result).toEqual([
+      {
+        name: 'Alcool gel',
+        details: {
+          productId: 'Alcool gel123'
+        }
+      },
+      {
+        name: 'Máscara',
+        details: {
+          productId: 'Máscara123'
+        }
+      }
+    ]);
+  });
+
+  test('should return correct product details array for different products', () => {
+    const result = productDetails('Shampoo', 'Condicionador');
+    expect(result).toEqual([
+      {
+        name: 'Shampoo',
+        details: {
+          productId: 'Shampoo123'
+        }
+      },
+      {
+        name: 'Condicionador',
+        details: {
+          productId: 'Condicionador123'
+        }
+      }
+    ]);
   });
 });

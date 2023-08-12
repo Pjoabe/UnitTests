@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 /*
   Você é responsável por escrever o código do sistema de pedidos de um restaurante através do qual será possível
   cadastrar um menu. Dado que um menu foi cadastrado, o sistema deve disponibilizar um objeto que permite:
@@ -93,11 +91,26 @@
 // - retornará o valor somado acrescido de 10%.
 // DICA: para isso, você precisará percorrer tanto o objeto da chave `food` quanto o objeto da chave `drink`.
 
-const createMenu = (objeto) => {
- const object = {
-  fetchMenu: () => objeto,
-};
-return object;
-};
+function createMenu(menu) {
+  const restaurant = {
+    fetchMenu: () => menu,
+    consumption: [],
+    order(item) {
+      this.consumption.push(item);
+    },
+    pay() {
+      let total = 0;
+      for (const item of this.consumption) {
+        if (menu.food[item]) {
+          total += menu.food[item];
+        } else if (menu.drink[item]) {
+          total += menu.drink[item];
+        }
+      }
+      return total * 1.1;
+    },
+  };
+  return restaurant;
+}
 
 module.exports = createMenu;

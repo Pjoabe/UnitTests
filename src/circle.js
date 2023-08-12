@@ -1,5 +1,3 @@
-/* eslint-disable max-len */
-
 /*
   A função `circle` recebe o raio de um círculo e retorna um objeto contendo suas informações: Raio, Área e Circunferência.
   Se não for especificado um raio, a função retorna `undefined`.
